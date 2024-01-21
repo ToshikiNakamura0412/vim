@@ -48,17 +48,32 @@ set noswapfile
 " === Tab ===
 " Show Tab with ▸-
 set list listchars=tab:\▸\-
-" Make Tab half-width space
-set expandtab
-" The number of space as Tab
-set tabstop=4
-set softtabstop=4
-" Indent size when shifting text
-set shiftwidth=4
 " Auto indent size
 set autoindent
 set smartindent
 set cindent
+set smarttab
+" Indent size when shifting text
+set shiftwidth=4
+" The number of space as Tab
+set softtabstop=4
+set tabstop=4
+" Make Tab half-width space
+set expandtab
+" Indent size for each filetype
+if has("autocmd")
+  " Enable file type search
+  filetype plugin on
+  " Use indentation according to file type
+  filetype indent on
+  "sw=shiftwidth, sts=softtabstop, ts=tabstop, et=expandtab
+  autocmd FileType sh   setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType zsh  setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType c    setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType cpp  setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType vim  setlocal sw=2 sts=2 ts=2 et
+endif
+
 
 " === Search ===
 " Ignore upper and lower case letters when searching
