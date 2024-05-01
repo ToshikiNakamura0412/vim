@@ -9,6 +9,8 @@ fi
 ln -sfv $SCRIPT_DIR/vimrc ~/.vimrc
 ln -sfv $SCRIPT_DIR/basic-settings.vim ~/.vim/basic-settings.vim
 ln -sfv $SCRIPT_DIR/keymap.vim ~/.vim/keymap.vim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 echo ""
 echo "==="
 echo "Finish!!"
