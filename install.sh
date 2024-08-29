@@ -3,6 +3,12 @@ SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
 echo ""
 echo "setting Vim... "
+if [ -d ~/.vim/plugged ]; then
+    rm -rf ~/.vim/plugged
+fi
+if [ -d ~/.vim/undo ]; then
+    rm -rf ~/.vim/undo
+fi
 if [ ! -d ~/.vim/undo ]; then
     mkdir -pv ~/.vim/undo
 fi
