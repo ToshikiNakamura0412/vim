@@ -2,15 +2,23 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Prerequisites
-Following software should be installed
-- `vim`
-- `curl`
+## Environment
+* Ubuntu
+* macOS
+
 ## Installation
-```
+### Ubuntu
+```bash
 git clone https://github.com/ToshikiNakamura0412/vim.git
 ./vim/install.sh
 ```
+
+### macOS
+```bash
+git clone https://github.com/ToshikiNakamura0412/vim.git
+./vim/install.sh mac
+```
+
 ## Tips
 * `Ctrl-n`: Keyword completion
 
