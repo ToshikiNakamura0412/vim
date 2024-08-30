@@ -1,5 +1,24 @@
 #!/bin/bash
+
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
+OS_NAME=$1
+if [ -z $OS_NAME ]; then
+    source /etc/os-release
+    OS_NAME=$(echo $ID)
+fi
+
+echo ""
+echo "install prerequisites..."
+if [ $OS_NAME = "ubuntu" ] || [ $OS_NAME = "debian" ]; then
+    sudo apt-get update && sudo apt-get install -y --no-install-recommends \
+        curl \
+        vim-gtk
+elif [ $OS_NAME = "mac" ]; then
+    brew install \
+        vim
+fi
+echo ">>> Done"
+echo ""
 
 echo ""
 echo "setting Vim... "
@@ -16,8 +35,6 @@ ln -sfv $SCRIPT_DIR/vimrc ~/.vimrc
 ln -sfv $SCRIPT_DIR/basic-settings.vim ~/.vim/basic-settings.vim
 ln -sfv $SCRIPT_DIR/keymap.vim ~/.vim/keymap.vim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+echo ">>> Done"
 echo ""
-echo "==="
-echo "Finish!!"
-echo "==="
