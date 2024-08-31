@@ -4,19 +4,15 @@
 
 ## Environment
 * Ubuntu
+  * x86_64
+  * arm64
 * macOS
+  * arm64
 
 ## Installation
-### Ubuntu
 ```bash
 git clone https://github.com/ToshikiNakamura0412/vim.git
 ./vim/install.sh
-```
-
-### macOS
-```bash
-git clone https://github.com/ToshikiNakamura0412/vim.git
-./vim/install.sh mac
 ```
 
 ## Tips
