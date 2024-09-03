@@ -16,7 +16,7 @@ echo "install prerequisites..."
 if [ $OS_NAME = "ubuntu" ] || [ $OS_NAME = "debian" ]; then
     sudo apt-get update && sudo apt-get install -y --no-install-recommends \
         curl \
-        vim-gtk
+        vim-gtk3
 elif [ $OS_NAME = "alpine" ]; then
     sudo apk update && sudo apk add \
         vim
