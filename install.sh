@@ -17,6 +17,9 @@ if [ $OS_NAME = "ubuntu" ] || [ $OS_NAME = "debian" ]; then
     sudo apt-get update && sudo apt-get install -y --no-install-recommends \
         curl \
         vim-gtk
+elif [ $OS_NAME = "alpine" ]; then
+    sudo apk update && sudo apk add \
+        vim
 elif [ $OS_NAME = "mac" ]; then
     brew install \
         vim
