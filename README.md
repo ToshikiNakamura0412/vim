@@ -3,11 +3,16 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Environment
-* Ubuntu
-  * x86_64
-  * arm64
-* macOS
-  * arm64
+### OS
+- Linux
+  - alpine
+  - debian
+  - ubuntu
+- macOS
+
+### Architecture
+- x86_64
+- arm64
 
 ## Installation
 ```bash
@@ -16,6 +21,6 @@ git clone https://github.com/ToshikiNakamura0412/vim.git
 ```
 
 ## Tips
-* `Ctrl-n`: Keyword completion
+- `Ctrl-n`: Keyword completion
 
   https://vim-jp.org/vimdoc-en/insert.html#ins-completion
