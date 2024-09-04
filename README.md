@@ -7,6 +7,8 @@
 - Linux
   - alpine
   - debian
+  - fedora
+  - opensuse (leap)
   - ubuntu
 - macOS
 
