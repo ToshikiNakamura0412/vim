@@ -25,6 +25,10 @@ elif [ $OS_NAME = "alpine" ]; then
     sudo apk update && sudo apk add \
         curl \
         vim
+elif [ $OS_NAME = "fedora" ]; then
+    sudo dnf check-update && sudo dnf install -y \
+        curl \
+        vim
 elif [ $OS_NAME = "mac" ]; then
     brew install \
         vim
