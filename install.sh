@@ -29,6 +29,10 @@ elif [ $OS_NAME = "fedora" ]; then
     sudo dnf check-update && sudo dnf install -y \
         curl \
         vim
+elif [ $OS_NAME = "opensuse-leap" ]; then
+    sudo zypper refresh && sudo zypper install -y --no-recommends \
+        curl \
+        vim
 elif [ $OS_NAME = "mac" ]; then
     brew install \
         vim
