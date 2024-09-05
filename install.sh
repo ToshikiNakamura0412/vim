@@ -22,11 +22,11 @@ elif [ $OS_NAME = "debian" ]; then
         curl \
         vim-gtk3
 elif [ $OS_NAME = "alpine" ]; then
-    sudo apk update && sudo apk add \
+    sudo apk update && sudo apk add --no-cache \
         curl \
         vim
 elif [ $OS_NAME = "fedora" ]; then
-    sudo dnf check-update || true && sudo dnf install -y \
+    sudo dnf check-update || true && sudo dnf install -y --setopt=install_weak_deps=False \
         curl \
         vim
 elif [ $OS_NAME = "opensuse-leap" ]; then
