@@ -29,6 +29,10 @@ elif [ $OS_NAME = "fedora" ]; then
     sudo dnf check-update || true && sudo dnf install -y --setopt=install_weak_deps=False \
         curl \
         vim
+elif [ $OS_NAME = "centos" ]; then
+    sudo dnf check-update || true && sudo dnf install -y --setopt=install_weak_deps=False \
+        curl-minimal \
+        vim
 elif [ $OS_NAME = "opensuse-leap" ]; then
     sudo zypper refresh && sudo zypper install -y --no-recommends \
         curl \
