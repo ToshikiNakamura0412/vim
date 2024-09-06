@@ -37,6 +37,10 @@ elif [ $OS_NAME = "opensuse-leap" ]; then
     sudo zypper refresh && sudo zypper install -y --no-recommends \
         curl \
         vim
+elif [ $OS_NAME = "arch" ]; then
+    sudo pacman -Sy --noconfirm \
+        curl \
+        vim
 elif [ $OS_NAME = "mac" ]; then
     brew install \
         vim
