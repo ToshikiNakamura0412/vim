@@ -6,7 +6,7 @@
 ### OS
 - Linux
   - alpine
-  - centos stream
+  - centos (stream)
   - debian
   - fedora
   - opensuse (leap)
