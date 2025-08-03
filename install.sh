@@ -1,68 +1,91 @@
 #!/bin/bash
 
-SCRIPT_DIR=$(cd $(dirname $0); pwd)
-if [ "$(uname)" = "Linux" ]; then
+VIM_INSTALL_SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+
+function vim_get_script_dir() {
+  echo ${VIM_INSTALL_SCRIPT_DIR}
+}
+
+function vim_get_os_name() {
+  if [[ "$(uname)" = "Linux" ]]; then
     source /etc/os-release
-    OS_NAME=$(echo $ID)
-elif [ "$(uname)" = "Darwin" ]; then
-    OS_NAME="mac"
-else
+    echo ${ID}
+  elif [[ "$(uname)" = "Darwin" ]]; then
+    echo ${ID}
+  else
     echo "This OS is not supported."
     exit 1
-fi
+  fi
+}
 
-echo ""
-echo "install prerequisites..."
-if [ $OS_NAME = "ubuntu" ]; then
+function vim_install_prerequisites() {
+  local os_name=$(vim_get_os_name)
+
+  echo ""
+  echo "install prerequisites..."
+  if [[ ${os_name} = "ubuntu" ]]; then
     sudo apt-get update && sudo apt-get install -y --no-install-recommends \
-        curl \
-        vim-gtk
-elif [ $OS_NAME = "debian" ]; then
+      curl \
+      vim-gtk
+  elif [[ ${os_name} = "debian" ]]; then
     sudo apt-get update && sudo apt-get install -y --no-install-recommends \
-        curl \
-        vim-gtk3
-elif [ $OS_NAME = "alpine" ]; then
+      curl \
+      vim-gtk3
+  elif [[ ${os_name} = "alpine" ]]; then
     sudo apk update && sudo apk add --no-cache \
-        curl \
-        vim
-elif [ $OS_NAME = "fedora" ]; then
+      curl \
+      vim
+  elif [[ ${os_name} = "fedora" ]]; then
     sudo dnf check-update || true && sudo dnf install -y --setopt=install_weak_deps=False \
-        curl \
-        vim
-elif [ $OS_NAME = "centos" ]; then
+      curl \
+      vim
+  elif [[ ${os_name} = "centos" ]]; then
     sudo dnf check-update || true && sudo dnf install -y --setopt=install_weak_deps=False \
-        curl-minimal \
-        vim
-elif [ $OS_NAME = "opensuse-leap" ]; then
+      curl-minimal \
+      vim
+  elif [[ ${os_name} = "opensuse-leap" ]]; then
     sudo zypper refresh && sudo zypper install -y --no-recommends \
-        curl \
-        vim
-elif [ $OS_NAME = "arch" ]; then
+      curl \
+      vim
+  elif [[ ${os_name} = "arch" ]]; then
     sudo pacman -Sy --noconfirm \
-        curl \
-        vim
-elif [ $OS_NAME = "mac" ]; then
+      curl \
+      vim
+  elif [[ ${os_name} = "mac" ]]; then
     brew install \
-        vim
-fi
-echo ">>> Done"
-echo ""
+      vim
+  fi
+  echo ">>> Done"
+  echo ""
+}
 
-echo ""
-echo "setting Vim... "
-if [ -d ~/.vim/plugged ]; then
+function vim_setup() {
+  local script_dir=$(vim_get_script_dir)
+  echo ${script_dir}
+
+  echo ""
+  echo "setting Vim... "
+  if [[ -d ~/.vim/plugged ]]; then
     rm -rf ~/.vim/plugged
-fi
-if [ -d ~/.vim/undo ]; then
+  fi
+  if [[ -d ~/.vim/undo ]]; then
     rm -rf ~/.vim/undo
-fi
-if [ ! -d ~/.vim/undo ]; then
+  fi
+  if [[ ! -d ~/.vim/undo ]]; then
     mkdir -pv ~/.vim/undo
+  fi
+  ln -sfv ${script_dir}/vimrc ~/.vimrc
+  ln -sfv ${script_dir}/basic-settings.vim ~/.vim/basic-settings.vim
+  ln -sfv ${script_dir}/keymap.vim ~/.vim/keymap.vim
+  echo ">>> Done"
+  echo ""
+}
+
+function vim_main() {
+  vim_install_prerequisites
+  vim_setup
+}
+
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
+  vim_main
 fi
-ln -sfv $SCRIPT_DIR/vimrc ~/.vimrc
-ln -sfv $SCRIPT_DIR/basic-settings.vim ~/.vim/basic-settings.vim
-ln -sfv $SCRIPT_DIR/keymap.vim ~/.vim/keymap.vim
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-echo ">>> Done"
-echo ""
