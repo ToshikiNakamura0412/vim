@@ -24,7 +24,20 @@ git clone https://github.com/ToshikiNakamura0412/vim.git
 ./vim/install.sh
 ```
 
+## Setup
+### plugin
+- If you want to enable Github Copilot, execute the following in Vim:
+  ```
+  :Copilot setup
+  ```
+
 ## Tips
 - `Ctrl-n`: Keyword completion
 
   https://vim-jp.org/vimdoc-en/insert.html#ins-completion
+
+## Troubleshooting
+If your Vim does not support clipboard operations, execute the following:
+```bash
+./vim/install_vim_linux_app.sh
+```
