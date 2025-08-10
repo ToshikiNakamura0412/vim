@@ -38,6 +38,7 @@ git clone https://github.com/ToshikiNakamura0412/vim.git
 
 ## Troubleshooting
 If your Vim does not support clipboard operations, execute the following:
+- Prerequisites: wget
 ```bash
 ./vim/install_vim_linux_app.sh
 ```
