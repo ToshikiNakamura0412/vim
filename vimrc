@@ -21,6 +21,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'machakann/vim-highlightedyank'
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
+Plug 'github/copilot.vim'
 call plug#end()
 
 " Basic settings
