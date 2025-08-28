@@ -13,15 +13,14 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 " List of plugins
 call plug#begin('~/.vim/plugged')
-Plug 'tomasr/molokai'
-Plug 'itchyny/lightline.vim'
-Plug 'mengelbrecht/lightline-bufferline'
-Plug 'preservim/nerdtree'
-Plug 'sheerun/vim-polyglot'
-Plug 'machakann/vim-highlightedyank'
-Plug 'tpope/vim-commentary'
-Plug 'jiangmiao/auto-pairs'
-Plug 'github/copilot.vim'
+Plug 'tomasr/molokai', { 'branch': 'master', 'depth': 1 }
+Plug 'itchyny/lightline.vim', { 'branch': 'master', 'depth': 1 }
+Plug 'mengelbrecht/lightline-bufferline', { 'branch': 'master', 'depth': 1 }
+Plug 'preservim/nerdtree', { 'branch': 'master', 'depth': 1 }
+Plug 'sheerun/vim-polyglot', { 'branch': 'master', 'depth': 1 }
+Plug 'machakann/vim-highlightedyank', { 'branch': 'master', 'depth': 1 }
+Plug 'tpope/vim-commentary', { 'branch': 'master', 'depth': 1 }
+Plug 'jiangmiao/auto-pairs', { 'branch': 'master', 'depth': 1 }
 call plug#end()
 
 " Basic settings
