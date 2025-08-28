@@ -26,6 +26,7 @@ git clone https://github.com/ToshikiNakamura0412/vim.git
 ## Setup
 ### plugin
 - If you want to enable Github Copilot, execute the following in Vim:
+  - Prerequisites: Node.js
   ```
   :Copilot setup
   ```
