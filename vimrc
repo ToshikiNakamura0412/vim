@@ -22,6 +22,7 @@ Plug 'machakann/vim-highlightedyank', { 'branch': 'master', 'depth': 1 }
 Plug 'tpope/vim-commentary', { 'branch': 'master', 'depth': 1 }
 Plug 'jiangmiao/auto-pairs', { 'branch': 'master', 'depth': 1 }
 Plug 'lambdalisue/vim-nerdfont', { 'branch': 'master', 'depth': 1 }
+" Plug 'github/copilot.vim', { 'branch': 'release', 'depth': 1 }
 call plug#end()
 
 " Basic settings

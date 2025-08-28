@@ -86,4 +86,9 @@ vim_main() {
 
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
   vim_main
+
+  if [[ "$1" == "--with-copilot" ]]; then
+    sed -i 's/^"\s*\(Plug .*\)/\1/' "$(vim_get_script_dir)/vimrc"
+    echo "[INFO] Copilot enabled. Please open Vim and run \`:Copilot setup\` to complete the setup."
+  fi
 fi
