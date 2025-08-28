@@ -21,8 +21,15 @@
 ## Installation
 ```bash
 git clone https://github.com/ToshikiNakamura0412/vim.git
-./vim/install.sh
+./vim/install.sh [--with-copilot]
 ```
+## Setup
+### plugin
+- If you want to enable Github Copilot, execute the following in Vim:
+  - Prerequisites: Node.js
+  ```
+  :Copilot setup
+  ```
 
 ## Tips
 - `Ctrl-n`: Keyword completion
