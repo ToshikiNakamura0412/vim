@@ -27,7 +27,7 @@ git clone https://github.com/ToshikiNakamura0412/vim.git
 ### Options
 - `--with-copilot` : Enable GitHub Copilot plugin in Vim.
 - `--setup-only`   : Only set up Vim configuration without installing prerequisites.
-- `-h, --help`    : Show this help message.
+- `-h, --help`    : Show help message.
 
 ## Setup
 ### plugin
