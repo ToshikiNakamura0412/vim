@@ -21,8 +21,14 @@
 ## Installation
 ```bash
 git clone https://github.com/ToshikiNakamura0412/vim.git
-./vim/install.sh [--with-copilot]
+./vim/install.sh
 ```
+
+### Options
+- `--with-copilot` : Enable GitHub Copilot plugin in Vim.
+- `--setup-only`   : Only set up Vim configuration without installing prerequisites.
+- `-h, --help`     : Show help message.
+
 ## Setup
 ### plugin
 - If you want to enable Github Copilot, execute the following in Vim:
