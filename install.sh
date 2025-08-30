@@ -84,11 +84,32 @@ vim_main() {
   vim_setup
 }
 
-if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
-  vim_main
+vim_install_show_help() {
+  echo "Usage: $0 [OPTIONS]"
+  echo ""
+  echo "Options:"
+  echo "  --with-copilot    Enable GitHub Copilot plugin in Vim."
+  echo "  --setup-only      Only set up Vim configuration without installing prerequisites."
+  echo "  -h, --help        Show this help message."
+}
 
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
   if [[ "$1" == "--with-copilot" ]]; then
-    sed -i 's/^"\s*\(Plug .*\)/\1/' "$(vim_get_script_dir)/vimrc"
+    vim_main
+    sed -i 's/^"\s*\(Plug .*\)/\1/' ~/.vimrc
     echo "[INFO] Copilot enabled. Please open Vim and run \`:Copilot setup\` to complete the setup."
+    exit 1
+  elif [[ "$1" == "--setup-only" ]]; then
+    vim_setup
+    exit 1
+  elif [[ "$1" == "-h" || "$1" == "--help" ]]; then
+    vim_install_show_help
+    exit 1
+  elif [[ -n "$1" ]]; then
+    echo "[ERROR] Unknown option: $1"
+    vim_install_show_help
+    exit 1
   fi
+
+  vim_main
 fi
