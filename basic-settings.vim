@@ -74,7 +74,6 @@ if has("autocmd")
   autocmd FileType vim  setlocal sw=2 sts=2 ts=2 et
 endif
 
-
 " === Search ===
 " Ignore upper and lower case letters when searching
 set ignorecase
@@ -84,3 +83,6 @@ set smartcase
 set hlsearch
 " Incremental search
 set incsearch
+
+" === Python ===
+let g:python3_host_prog = substitute(system('which python3'), '\n', '', 'g')
