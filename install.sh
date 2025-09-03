@@ -1,6 +1,7 @@
 #!/bin/bash
 
 VIM_INSTALL_SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+VIMRC_FILE=~/.vimrc
 
 vim_get_script_dir() {
   echo "${VIM_INSTALL_SCRIPT_DIR}"
@@ -96,15 +97,21 @@ vim_install_show_help() {
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
   if [[ "$1" == "--with-copilot" ]]; then
     vim_main
-    sed -i 's/^"\s*\(Plug .*\)/\1/' ~/.vimrc
+    if [ "$(uname)" = "Darwin" ]; then
+      cp -L "${VIMRC_FILE}" "${VIMRC_FILE}.tmp"
+      mv "${VIMRC_FILE}.tmp" "${VIMRC_FILE}"
+      sed -i '' -E "/'github\/copilot\.vim'/s/^[[:space:]]*\"[[:space:]]*(Plug.*)/\1/" "${VIMRC_FILE}"
+    else
+      sed -i -E "/'github\/copilot\.vim'/s/^[[:space:]]*\"[[:space:]]*(Plug.*)/\1/" "${VIMRC_FILE}"
+    fi
     echo "[INFO] Copilot enabled. Please open Vim and run \`:Copilot setup\` to complete the setup."
-    exit 1
+    exit 0
   elif [[ "$1" == "--setup-only" ]]; then
     vim_setup
-    exit 1
+    exit 0
   elif [[ "$1" == "-h" || "$1" == "--help" ]]; then
     vim_install_show_help
-    exit 1
+    exit 0
   elif [[ -n "$1" ]]; then
     echo "[ERROR] Unknown option: $1"
     vim_install_show_help
