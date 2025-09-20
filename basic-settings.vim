@@ -23,7 +23,7 @@ set whichwrap=b,s,h,l,<,>,[,],~
 
 " === Edit ===
 " Copy to clipboard
-set clipboard=unnamedplus
+set clipboard=unnamed,unnamedplus
 " Remove space at the end of line when saving
 autocmd BufWritePre * :%s/\s\+$//ge
 " Place the cursor at the last position of the last time when opening file
